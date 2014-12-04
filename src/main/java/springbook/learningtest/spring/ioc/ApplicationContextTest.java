@@ -12,12 +12,14 @@ import org.springframework.beans.factory.support.PropertiesBeanDefinitionReader;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.context.support.StaticApplicationContext;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
 
+import springbook.learningtest.spring.ioc.bean.AnnotatedHello;
 import springbook.learningtest.spring.ioc.bean.Hello;
 import springbook.learningtest.spring.ioc.bean.Printer;
 import springbook.learningtest.spring.ioc.bean.StringPrinter;
@@ -84,7 +86,7 @@ public class ApplicationContextTest {
 		GenericApplicationContext ac = new GenericApplicationContext();
 		PropertiesBeanDefinitionReader reader = new PropertiesBeanDefinitionReader(ac);
 		reader.loadBeanDefinitions(basePath + "bean.properties");
-		
+	
 		ac.refresh();
 		
 		Hello hello = ac.getBean("hello", Hello.class);
@@ -109,6 +111,16 @@ public class ApplicationContextTest {
 		hello.print();
 		assertThat(printer.toString(), is("Hello Child"));
 		//child의 name을 출력하는지 확인
+	}
+	
+	@Test
+	public void simpleBeanScanning() {
+		ApplicationContext ctx =
+				new AnnotationConfigApplicationContext(
+						"springbook.learningtest.spring.ioc.bean");
+		AnnotatedHello hello = ctx.getBean("myAnnotatedHello", AnnotatedHello.class);
+		
+		assertThat(hello, is(notNullValue()));
 	}
 	
 }
