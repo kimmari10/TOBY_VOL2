@@ -7,6 +7,7 @@ import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.PropertiesBeanDefinitionReader;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.context.support.StaticApplicationContext;
@@ -135,6 +137,22 @@ public class ApplicationContextTest {
 		AnnotatedHelloConfig config = ctx.getBean("annotatedHelloConfig", AnnotatedHelloConfig.class);
 		assertThat(config, is(notNullValue()));
 		assertThat(config.annotatedHello(), is(sameInstance(hello)));
+	}
+	
+	@Test
+	public void simpleAtAutowired() {
+		AbstractApplicationContext ac =
+				new AnnotationConfigApplicationContext(BeanA.class, BeanB.class);
+		BeanA beanA = ac.getBean(BeanA.class);
+		assertThat(beanA.beanB.print(), is("beanB"));
+	}
+	
+	private static class BeanA {
+		@Autowired BeanB beanB;
+	}
+	
+	private static class BeanB {
+		public String print() {return "beanB";}
 	}
 	
 }

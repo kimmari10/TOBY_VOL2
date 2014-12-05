@@ -1,15 +1,15 @@
 package springbook.learningtest.spring.ioc.bean;
 
-import javax.annotation.*;
+
 
 public class Hello {
-	String name;
-	Printer printer;
+	private String name;
+	private Printer printer;
 	
 	public String sayHello() {
 		return "Hello " + name;
 	}
-	
+
 	public void print() {
 		this.printer.print(sayHello());
 	}
