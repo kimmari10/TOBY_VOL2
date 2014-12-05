@@ -25,6 +25,7 @@ import org.springframework.util.StringUtils;
 import springbook.learningtest.spring.ioc.bean.AnnotatedHello;
 import springbook.learningtest.spring.ioc.bean.AnnotatedHelloConfig;
 import springbook.learningtest.spring.ioc.bean.Hello;
+import springbook.learningtest.spring.ioc.bean.Hellow;
 import springbook.learningtest.spring.ioc.bean.Printer;
 import springbook.learningtest.spring.ioc.bean.StringPrinter;
 
@@ -155,4 +156,6 @@ public class ApplicationContextTest {
 		public String print() {return "beanB";}
 	}
 	
+	
+
 }

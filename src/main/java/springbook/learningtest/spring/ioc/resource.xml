@@ -12,8 +12,12 @@
 	<bean id="hello" class="springbook.learningtest.spring.ioc.annotation.Hello" >
 		<property name="name" value="Spring" />
 	</bean>
+	
+	<bean id="hellow" class="springbook.learningtest.spring.ioc.bean.Hellow" />
 
 	<bean id="printer" class="springbook.learningtest.spring.ioc.annotation.StringPrinter">
 	</bean>
+
+	<context:property-placeholder location="classpath:bean.properties" />
 
 </beans>
