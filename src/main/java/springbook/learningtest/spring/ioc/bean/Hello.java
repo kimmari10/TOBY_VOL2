@@ -1,5 +1,7 @@
 package springbook.learningtest.spring.ioc.bean;
 
+import javax.annotation.*;
+
 public class Hello {
 	String name;
 	Printer printer;
@@ -19,6 +21,5 @@ public class Hello {
 	public void setPrinter(Printer printer) {
 		this.printer = printer;
 	}
-	
 	
 }
