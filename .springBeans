@@ -10,6 +10,7 @@
 		<config>src/main/java/springbook/learningtest/spring/ioc/parentContext.xml</config>
 		<config>src/main/java/springbook/learningtest/spring/ioc/childContext.xml</config>
 		<config>src/main/java/springbook/learningtest/spring/ioc/resource.xml</config>
+		<config>src/main/java/springbook/learningtest/spring/enable/beanrole.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
