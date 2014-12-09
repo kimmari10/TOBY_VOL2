@@ -20,7 +20,6 @@ public class ValueInjectionTest {
 		BeanSP bean = ac.getBean(BeanSP.class); 
 		ConfigSP bean2 = ac.getBean(ConfigSP.class);
 		
-		
 		assertThat(bean2, is(notNullValue()));
 		assertThat(bean.username, is("Spring"));
 		assertThat(bean.hellow.name, is("Windows 7"));
@@ -51,4 +50,5 @@ public class ValueInjectionTest {
 			this.setLocation(new ClassPathResource("database.properties", getClass()));
 		}
 	}
+	
 }
